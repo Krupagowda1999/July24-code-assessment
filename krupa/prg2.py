@@ -7,10 +7,11 @@ class Student:
         studentlist.append(dic) 
 
 class Sem1Result:
-    def result(self,sub1mark,sub2mark,sub3mark,sub4mark,sub5mark)
-    total=((sub1mark+sub2mark+sub4mark+sub5mark)/5)
-    dic1={"total":total,sub1mark":sub1mark,"sub2mark":sub2mark,"sub3mark":sub3mark,"sub4mark":sub4mark,"sub5mark":sub5mark}
-    studentlist.append(dic1)
+    def result(self,sub1mark,sub2mark,sub3mark,sub4mark,sub5mark):
+            
+        total=((sub1mark+sub2mark+sub4mark+sub5mark)/5)
+        dic1={"total":total,"sub1mark":sub1mark,"sub2mark":sub2mark,"sub3mark":sub3mark,"sub4mark":sub4mark,"sub5mark":sub5mark}
+        studentlist.append(dic1)
 
 obj1=Student()
 obj2=Sem1Result()
@@ -51,7 +52,7 @@ while(True):    #menudriven
                 return False
 
 obj1.addstudent(name,rollno,admno,college,parentname,moblienumber,emailid)
-        obj2.Sem1Result(sub1mark,sub2mark,sub3mark,sub4mark,sub5mark)
+obj2.Sem1Result(sub1mark,sub2mark,sub3mark,sub4mark,sub5mark)
 
 
     if choice==2:
@@ -59,14 +60,14 @@ obj1.addstudent(name,rollno,admno,college,parentname,moblienumber,emailid)
         student_list_json=json.dumps(Studentlist)
         with open(jsonfilePath,'w',encoding='UTF8') as f:
         f.write(student_list_json)
-            
+                
     if choice==3:
         jsonfilePath='studentranking.json'
         studentrank_list_json=json.dumps(Studentlist)
         with open(jsonfilePath,'w',encoding='UTF8') as f:
         f.write(sorted(studentr_list_json,key=lambda i:i['total'],reverse=True))
         print(studentlist)
-
+try:
     if choice==4:
         if(total<5):
             print("percentage",total)
@@ -75,14 +76,16 @@ obj1.addstudent(name,rollno,admno,college,parentname,moblienumber,emailid)
             connection.starttls()
             connection.login("krupamh0@gmail.com","panipuri23@")
             connection.sendmail("krupa9927@gmail.com",Email,message)
-            print("Email for your Bill has successfully send")
+            print("Email successfully send")
             connection.quit()
             break
-        else:
+         else:
             break
+        
+except:
 logging.error("somethin went program")
     print(studentlist)
-            
+                
 
     if choice==5:
         break
